@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="icefaces:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>icefaces</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="icefaces-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="icefaces:war exploded" />
+    </root>
+  </artifact>
+</component>

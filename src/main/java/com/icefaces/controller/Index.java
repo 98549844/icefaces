@@ -1,4 +1,4 @@
-package com.icefaces;
+package com.icefaces.controller;
 
 
 import org.apache.logging.log4j.LogManager;
@@ -6,13 +6,12 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ActionEvent;
 import java.io.Serializable;
 //import javax.faces.bean.CustomScoped;
-import javax.faces.bean.ManagedBean;
-import javax.inject.Named;
 
 
 /**

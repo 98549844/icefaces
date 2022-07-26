@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: layout.xhtml 1441 2011-01-26 13:37:57Z keith.wong $ -->
+<!-- $Name$ -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:icecore="http://www.icefaces.org/icefaces/core"
+      xmlns:mpfa="http://www.mpfa.org.hk/component/core"
+      xmlns:mpfacc="http://www.mpfa.org.hk/component/core/composite">
+<f:view>
+   <f:loadBundle basename="hk.org.mpfa.core.resource.Resource"
+                 var="coreres" />
+   <f:loadBundle basename="hk.org.mpfa.sdbdemo.resource.Resource"
+                 var="appres" />
+
+   <!--	<h:head>-->
+   <title><ui:insert name="title">
+      #{appres.appName} - #{moduleName}
+   </ui:insert></title>
+   <link href="./images/mpfa.ico" rel="shortcut icon" type="image/x-icon" />
+   <link href="./css/mpfa/mpfa.css" rel="stylesheet" type="text/css"/>
+   <link href="./css/app.css" rel="stylesheet" type="text/css" />
+   <h:outputStylesheet library="css" name="mpfa-uicomps.css"></h:outputStylesheet>
+   <!--	<link href="resources/css/mpfa/mpfa.css" rel="stylesheet" type="text/css" />-->
+   <!--	 <ice:outputStyle href="/resources/css/mpfa-uicomps.css"/> -->
+   <!--	<h:outputStylesheet library="css" name="css/mpfa/mpfa.css"/>-->
+   <!-- <script src="resources/javascript/mpfa-uicomps.js" type="text/javascript"></script> -->
+   <script src="./javascript/input_mask.js" type="text/javascript"></script>
+   <script src="./javascript/core.js" type="text/javascript"></script>
+   <script src="./javascript/menu.js" type="text/javascript"></script>
+   <script src="./javascript/keyTrap.js" type="text/javascript"></script>
+   <script src="./javascript/print.js" type="text/javascript"></script>
+   <script src="./javascript/browserRightClick.js" type="text/javascript"></script>
+   <script language="JavaScript" type="text/javascript">
+      var JSESSIONID = "${cookie['JSESSIONID'].value}";
+
+      urlChk = chkUrl(String(window.location),String(window.name));
+   </script>
+   <!--    </h:head>-->
+
+   <h:body oncontextmenu="return false">
+      <h:form>
+         <table width="100%" border="00" cellspacing="0" cellpadding="0">
+            <tbody>
+            <tr>
+               <td>
+                  <table width="100%" cellspacing="0" cellpadding="0" border="00">
+                     <tbody>
+                     <tr>
+                        <td width="76"><a href="#"
+                                          onmouseover="MM_swapImage('Image41','','images/MPF-main-logo-over.gif',1)"
+                                          onmouseout="MM_swapImgRestore()"><img width="76"
+                                                                                height="74" border="0" id="Image41" name="Image41"
+                                                                                src="images/MPF-main-logo.gif" /></a></td>
+                        <td>
+                           <table width="100%" cellspacing="0" cellpadding="0" border="00">
+                              <tbody>
+                              <ui:insert name="header">
+                                 <ui:include src="header.xhtml" />
+                              </ui:insert>
+                              <ui:insert name="menu">
+                                 <ui:include src="menu.xhtml" />
+                              </ui:insert>
+                              </tbody>
+                           </table>
+                        </td>
+                     </tr>
+                     </tbody>
+                  </table>
+               </td>
+            </tr>
+            <ui:insert name="status">
+               <ui:include src="status.xhtml" />
+            </ui:insert>
+
+            <!-- Content -->
+            <tr>
+               <td>
+                  <table width="100%" border="00" cellspacing="0" cellpadding="0">
+                     <tr>
+                        <td width="18"><img src="images/spacer.gif" width="18"
+                                            height="1" /></td>
+                        <td valign="top"><ui:insert name="content" /></td>
+                     </tr>
+                     <tr>
+                        <td>&nbsp;</td>
+                     </tr>
+                  </table>
+               </td>
+               <td width="18"><img src="images/spacer.gif" width="18"
+                                   height="1" /></td>
+            </tr>
+            </tbody>
+         </table>
+         <mpfacc:messagePopup bean="#{messagePopup}" />
+      </h:form>
+      <form name="logoutForm" action="logout.jsp" method="post">
+         <input name="sessionId" type="hidden" />
+      </form>
+   </h:body>
+</f:view>
+</html>

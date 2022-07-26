@@ -11,24 +11,21 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ace="http://www.icefaces.org/icefaces/components"
->
+      xmlns:ace="http://www.icefaces.org/icefaces/components">
+
+<h:head>
+    <link href="css/color.css" rel="stylesheet"
+          type="text/css"/>
+    <title>ACE 4.3 Application</title>
+</h:head>
 
 <f:view>
     <h:outputLabel value="Hello, world JSF"/>
 </f:view>
-
-<h:head>
-    <title>ACE 4.3 Application</title>
-</h:head>
-
-
 <h:body>
-    <div style="text-align: center;"><h2>Hello world ! JSF</h2></div>
-    <div style="text-align: center;"><h2>调用JavaBean: #{index.message}</h2></div>
     <div style="text-align: center;"><h2><label>#{index.message}</label></h2></div>
-    <div style="text-align: center;"><h2><label>"#{index.message}"</label></h2></div>
-
+    <div style="text-align: center;"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
+    <div class="red"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
 
 
 </h:body>

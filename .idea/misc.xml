@@ -10,6 +10,10 @@
       </list>
     </option>
   </component>
+  <component name="ProjectResources">
+    <resource url="http://www.icefaces.org/icefaces/components" location="$PROJECT_DIR$/lib/icefaces-ee-ace.jar!/META-INF/components.tld" />
+    <resource url="http://xmlns.jcp.org/jsf/facelets" location="$PROJECT_DIR$/../framework_upgrade/Ace2DemoWeb/WebContent/WEB-INF/lib/jsf-support.jar!/schemas/html_basic.taglib.xml" />
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="azul-1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

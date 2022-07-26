@@ -38,7 +38,7 @@ public class Index implements Serializable {
 
     @PostConstruct
     public void init() {
-        message = "Hello World! KALAM";
+        message = "Hello World! JSF INDEX";
     }
 
 

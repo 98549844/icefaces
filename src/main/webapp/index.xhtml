@@ -22,7 +22,7 @@
     <script type="text/javascript" src="js/common.js"></script>
 
     <ui:insert name="title">
-        <title>#{index.title}</title>
+        <title>#{index.version}</title>
     </ui:insert>
 </h:head>
 
@@ -34,10 +34,11 @@
 </f:view>
 <h:body>
     <div style="text-align: center;"><h2><label>#{index.message}</label></h2></div>
-    <div style="text-align: center;"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
-    <div class="red"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
-    <div class="blueviolet"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
-    <div class="olivedrab"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
+    <div style="text-align: center;"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
+    <div class="red"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
+    <div class="blueviolet"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
+    <div class="olivedrab"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
+
     <div><a href="#" onclick="alertMsg()">call common.js !</a></div>
     <div><a href="#" onclick="alert('icefaces 4.3 application')">direct call javascript !</a></div>
 </h:body>

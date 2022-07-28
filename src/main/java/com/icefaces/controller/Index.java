@@ -1,19 +1,15 @@
 package com.icefaces.controller;
 
 
-import com.icefaces.util.PropertyUtil;
+import com.icefaces.util.PropertiesUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ActionEvent;
+import java.io.IOException;
 import java.io.Serializable;
 //import javax.faces.bean.CustomScoped;
 
@@ -30,26 +26,28 @@ import java.io.Serializable;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "index")
-@ViewScoped
+@SessionScope
 //@CustomScoped
 public class Index implements Serializable {
 
     private static Logger log = LogManager.getLogger(Index.class.getName());
 
 
-    private String message = "Hello World! INDEX";
-    private String title;
-    private String version;
+    private String message = "message";
+    private String title = "title";
+    private String version = "version";
 
-
-    @Autowired
-    private PropertyUtil propertyUtil;
 
     @PostConstruct
     public void init() {
         message = "Hello World! JSF INDEX";
         title = "ACE 4.3 Application";
-        version = propertyUtil.getVersion();
+        try {
+            version = PropertiesUtil.getProperty(PropertiesUtil.FILENAME, "version");
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
 
     }
 

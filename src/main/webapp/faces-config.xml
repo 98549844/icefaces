@@ -16,8 +16,8 @@
     <application>
         <locale-config>
             <default-locale>en</default-locale>
-            <supported-locale>zh_cn</supported-locale>
-            <supported-locale>zh_tw</supported-locale>
+            <supported-locale>zh_CN</supported-locale>
+            <supported-locale>zh_TW</supported-locale>
         </locale-config>
         <resource-bundle>
             <base-name>com.icefaces.resource</base-name>

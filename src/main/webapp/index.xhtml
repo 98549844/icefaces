@@ -22,13 +22,14 @@
     <script type="text/javascript" src="js/common.js"></script>
 
     <ui:insert name="title">
-        <title>#{index.version}</title>
+        <title>#{index.title}</title>
     </ui:insert>
 </h:head>
 
 
 <f:view>
-<!--    <icecore:loadBundle var="icefaces" basename="com.icefaces.resource"></icecore:loadBundle>-->
+<!--    <f:loadBundle var="icefaces" basename="com.icefaces.resource.messages"></f:loadBundle>-->
+<!--    <div><h:outputLabel value="Version: #{icefaces.version}"/></div>-->
     <div><h:outputLabel value="Version: #{index.version}"/></div>
     <div><h:outputLabel value="Hello, world JSF"/></div>
 </f:view>

@@ -11,25 +11,35 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ace="http://www.icefaces.org/icefaces/components">
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      xmlns:icecore="http://www.icefaces.org/icefaces/core"
+>
 
 
 <h:head>
-    <link href="./images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="./images/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
     <link href="./css/color.css" rel="stylesheet" type="text/css"/>
-    <link href="./js/common.js" type="text/javascript"/>
-    <link href="./js/core.js" type="text/javascript"/>
+    <script type="text/javascript" src="js/common.js"></script>
 
-    <title>ACE 4.3 Application</title>
+    <ui:insert name="title">
+        <title>#{index.title}</title>
+    </ui:insert>
 </h:head>
 
+
 <f:view>
-    <h:outputLabel value="Hello, world JSF"/>
+<!--    <icecore:loadBundle var="icefaces" basename="com.icefaces.resource"></icecore:loadBundle>-->
+    <div><h:outputLabel value="Version: #{index.version}"/></div>
+    <div><h:outputLabel value="Hello, world JSF"/></div>
 </f:view>
 <h:body>
     <div style="text-align: center;"><h2><label>#{index.message}</label></h2></div>
     <div style="text-align: center;"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
     <div class="red"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
-
+    <div class="blueviolet"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
+    <div class="olivedrab"><h2><label>HOME PAGE : "#{index.message}"</label></h2></div>
+    <div><a href="#" onclick="alertMsg()">call common.js !</a></div>
+    <div><a href="#" onclick="alert('icefaces 4.3 application')">direct call javascript !</a></div>
 </h:body>
+
 </html>

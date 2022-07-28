@@ -12,3 +12,5 @@ C:\Users\Kalam_au\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\221.5921.22.p
 
 xmlns:icecore="http://www.icefaces.org/icefaces/core"
 C:\ideaPorject\framework_upgrade\SDBDemoWeb\WebContent\WEB-INF\lib\icefaces-ee.jar!\META-INF\core.taglib.xml
+C:\Users\Kalam_au\.m2\repository\org\icefaces\icefaces\4.1.1\icefaces-4.1.1.jar!\META-INF\core.taglib.xml
+

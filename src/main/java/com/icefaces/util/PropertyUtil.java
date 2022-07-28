@@ -20,7 +20,20 @@ import java.util.ResourceBundle;
 @PropertySource(value = "classpath:properties/messages.properties", encoding = "UTF-8", name = "messages.properties")
 public class PropertyUtil {
     private static final Logger log = LogManager.getLogger(PropertyUtil.class.getName());
-
+//
+//    private static final String FILENAME = "properties/messages";
+//    private static ResourceBundle resourceBundle = ResourceBundle.getBundle(FILENAME);
+//
+//    public static String getProperty(final String key) {
+//        String str = null;
+//        if (resourceBundle != null) {
+//            str = resourceBundle.getString(key);
+//            log.info("Value found: " + str + " for key: " + key);
+//        } else {
+//            log.info("Properties file was not loaded correctly!!");
+//        }
+//        return str;
+//    }
 
     @Value("${version}")
     private String version;

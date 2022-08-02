@@ -1,4 +1,4 @@
-package com.icefaces.controller;
+package com.icefaces.bean;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

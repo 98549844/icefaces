@@ -1,14 +1,17 @@
-package com.icefaces.controller;
+package com.icefaces.bean;
 
 
 import com.icefaces.util.PropertiesUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.icefaces.ace.component.fileentry.FileEntry;
+import org.icefaces.ace.component.fileentry.FileEntryEvent;
+import org.icefaces.ace.component.fileentry.FileEntryResults;
 import org.springframework.web.context.annotation.SessionScope;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
 import java.io.IOException;
 import java.io.Serializable;
 //import javax.faces.bean.CustomScoped;
@@ -50,6 +53,8 @@ public class Index implements Serializable {
         }
 
     }
+
+
 
 
     public String getMessage() {

@@ -1,18 +1,18 @@
 
 .red {
-    font-size: 18px;
+    font-size: 12px;
     color: red;
     font-family: Arial, '汉仪行楷简', system-ui;
-    line-height: 300%;
+    line-height: 100%;
     font-weight: bold;
     text-align: center;
 }
 
 .blueviolet {
-    font-size: 18px;
+    font-size: 13px;
     color: blueviolet;
     font-family: Arial, '汉仪行楷简', system-ui;
-    line-height: 300%;
+    line-height: 100%;
     font-weight: bold;
     text-align: center
 

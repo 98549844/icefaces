@@ -22,31 +22,27 @@ import java.util.List;
 
 
 @SuppressWarnings(value = "deprecation")
-@ManagedBean(name= FileEntryBean.BEAN_NAME)
+@ManagedBean(name = FileEntryBean.BEAN_NAME)
 @CustomScoped(value = "#{window}")
 public class FileEntryBean implements Serializable {
 
     public static final String BEAN_NAME = "fileEntry";
-    public String getBeanName() { return BEAN_NAME; }
+
+    public String getBeanName() {
+        return BEAN_NAME;
+    }
+
     private List<UploadedFile> fileData = new ArrayList<UploadedFile>();
     private String totalFiles;
     private String totalSize;
 
     public void sampleListener(FileEntryEvent e) {
-        FileEntry fe = (FileEntry)e.getComponent();
+        FileEntry fe = (FileEntry) e.getComponent();
         FileEntryResults results = fe.getResults();
         File parent = null;
 
         for (FileEntryResults.FileInfo i : results.getFiles()) {
-            fileData.add(
-                    new UploadedFile(
-                            i.getFileName(),
-                            i.getSize() + " bytes",
-                            i.getContentType(),
-                            i.isSaved() ? null : ("File was not saved because: " +
-                                    i.getStatus().getFacesMessage(
-                                            FacesContext.getCurrentInstance(),
-                                            fe, i).getSummary()) ));
+            fileData.add(new UploadedFile(i.getFileName(), i.getSize() + " bytes", i.getContentType(), i.isSaved() ? null : ("File was not saved because: " + i.getStatus().getFacesMessage(FacesContext.getCurrentInstance(), fe, i).getSummary())));
 
             if (i.isSaved()) {
                 File file = i.getFile();
@@ -95,9 +91,20 @@ public class FileEntryBean implements Serializable {
             this.info = info;
         }
 
-        public String getName() { return name; }
-        public String getSize() { return size; }
-        public String getContentType() { return contentType; }
-        public String getInfo() { return info; }
+        public String getName() {
+            return name;
+        }
+
+        public String getSize() {
+            return size;
+        }
+
+        public String getContentType() {
+            return contentType;
+        }
+
+        public String getInfo() {
+            return info;
+        }
     }
 }

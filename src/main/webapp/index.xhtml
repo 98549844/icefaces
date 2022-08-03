@@ -204,6 +204,44 @@
 <!--        </td>-->
 <!--    </tr>-->
 
+
+    <tr>
+        <td colspan="4"><h:outputLabel value="Tabset"/></td>
+    </tr>
+    <tr>
+        <td>
+            <h:form id="tabSetForm">
+                <ace:tabSet id="serverTabSet" clientSide="false" style="clear:both;">
+                    <ace:tabPane id="pane1">
+                        <f:facet name="label">My First Server Tab</f:facet>
+                        <h:outputText id="pane1Body" value="First Tab Body" />
+                        <h:outputText value="#{tabServerSide.slowDownTab}"
+                                      rendered="#{not tabServerSide.fastTabs}" />
+                    </ace:tabPane>
+                    <ace:tabPane id="pane2">
+                        <f:facet name="label">My Second Server Tab</f:facet>
+                        <h:outputText id="pane2Body" value="Second Body" />
+                        <h:outputText value="#{tabServerSide.slowDownTab}"
+                                      rendered="#{not tabServerSide.fastTabs}" />
+                    </ace:tabPane>
+                    <ace:tabPane id="pane3">
+                        <f:facet name="label">My Third Server Tab</f:facet>
+                        <h:outputText id="pane3Body" value="Third Body" />
+                        <h:outputText value="#{tabServerSide.slowDownTab}"
+                                      rendered="#{not tabServerSide.fastTabs}" />
+                    </ace:tabPane>
+                </ace:tabSet>
+            </h:form>
+            <h:form id="form2">
+                <h:panelGrid columns="3" style="border-spacing: 10px;">
+                    <h:selectBooleanCheckbox id="fastTabs" value="#{tabServerSide.fastTabs}"/>
+                    <h:outputText value="Use Fast Loading Tabs"/>
+                    <h:commandButton id="set" value="Set" type="submit"/>
+                </h:panelGrid>
+            </h:form>
+        </td>
+    </tr>
+
 </h:body>
 
 </html>

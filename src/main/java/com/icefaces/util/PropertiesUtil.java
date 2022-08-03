@@ -30,7 +30,7 @@ public class PropertiesUtil {
         Properties properties = new Properties();
         InputStream inStream = PropertiesUtil.class.getClassLoader().getResourceAsStream(filename);
         properties.load(inStream);
-        System.out.println(properties.get(key));
+       // System.out.println(properties.get(key));
 
         return (String) properties.get(key);
     }

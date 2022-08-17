@@ -1,11 +1,14 @@
+/*
 package com.icefaces.bean;
 
+*/
 /**
  * @Classname: FileEntryBean
  * @Date: 2022/8/2
  * @Author: kalam_au
  * @Description:
- */
+ *//*
+
 
 
 import org.icefaces.ace.component.fileentry.FileEntry;
@@ -108,3 +111,4 @@ public class FileEntryBean implements Serializable {
         }
     }
 }
+*/

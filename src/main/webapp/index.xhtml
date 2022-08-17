@@ -39,12 +39,50 @@
     <div class="red"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
     <div class="blueviolet"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
     <div class="olivedrab"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
+    <div class="olivedrab"><h2><label>FROM DATABASE : "#{index.data}"</label></h2></div>
 
     <div><a href="#" onclick="alertMsg()">call common.js !</a></div>
     <div><a href="#" onclick="alert('icefaces 4.3 application')">direct call javascript !</a></div>
 
 
     <table>
+
+
+        <tr>
+            <td>
+                <h:outputText value="*********************************************" styleClass="line"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td><h:outputText value="input text"/></td>
+
+            <td>
+                <!--        <ui:composition>-->
+                <!--            <ui:param name="title" value="#{msgs['example.ace.autocompleteentry.title']}"/>-->
+                <!--            <ui:param name="description" value="#{msgs['example.ace.autocompleteentry.description']}"/>-->
+
+                <!--            <ui:define name="example">-->
+                <h:form id="inputForm">
+                    <ace:autoCompleteEntry id="autoComplete"
+                                           value="#{autoCompleteEntryBean.selectedText}"
+                                           rows="20" width="400"
+                                           filterMatchMode=""
+                                           label="Cities of the World:"
+                                           labelPosition="left">
+                        <f:selectItems value="#{autoCompleteEntryBean.cities}"/>
+                        <ace:ajax event="valueChange" render="@all"/>
+                        <ace:ajax event="blur" render="@all"/>
+                    </ace:autoCompleteEntry>
+                </h:form>
+                <!--            </ui:define>-->
+                <!--        </ui:composition>-->
+
+
+            </td>
+        </tr>
+<!--
+
         <tr>
             <td>
                 <h:outputText value="*********************************************" styleClass="line"/>
@@ -115,6 +153,7 @@
                 </h:form>
             </td>
         </tr>
+-->
 
     </table>
 
@@ -123,7 +162,6 @@
             <h:outputText value="*********************************************" styleClass="line"/>
         </td>
     </tr>
-
 
 
     <tr>
@@ -167,42 +205,51 @@
     </tr>
 
 
-<!--    <tr>-->
-<!--        <td><h:outputLabel value="Tabset"/></td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--        <td>-->
-<!--            <h:form id="tabSetForm">-->
-<!--                <ace:tabSet id="serverTabSet" clientSide="false" style="clear:both;">-->
-<!--                    <ace:tabPane id="pane1">-->
-<!--                        <f:facet name="label">My First Server Tab</f:facet>-->
-<!--                        <h:outputText id="pane1Body" value="First Tab Body"/>-->
-<!--                        <h:outputText value="#{tabServerSide.slowDownTab}"-->
-<!--                                      rendered="#{not tabServerSide.fastTabs}"/>-->
-<!--                    </ace:tabPane>-->
-<!--                    <ace:tabPane id="pane2">-->
-<!--                        <f:facet name="label">My Second Server Tab</f:facet>-->
-<!--                        <h:outputText id="pane2Body" value="Second Body"/>-->
-<!--                        <h:outputText value="#{tabServerSide.slowDownTab}"-->
-<!--                                      rendered="#{not tabServerSide.fastTabs}"/>-->
-<!--                    </ace:tabPane>-->
-<!--                    <ace:tabPane id="pane3">-->
-<!--                        <f:facet name="label">My Third Server Tab</f:facet>-->
-<!--                        <h:outputText id="pane3Body" value="Third Body"/>-->
-<!--                        <h:outputText value="#{tabServerSide.slowDownTab}"-->
-<!--                                      rendered="#{not tabServerSide.fastTabs}"/>-->
-<!--                    </ace:tabPane>-->
-<!--                </ace:tabSet>-->
-<!--            </h:form>-->
-<!--            <h:form id="form2">-->
-<!--                <h:panelGrid columns="3" style="border-spacing: 10px;">-->
-<!--                    <h:selectBooleanCheckbox id="fastTabs" value="#{tabServerSide.fastTabs}"/>-->
-<!--                    <h:outputText value="Use Fast Loading Tabs"/>-->
-<!--                    <h:commandButton id="set" value="Set" type="submit"/>-->
-<!--                </h:panelGrid>-->
-<!--            </h:form>-->
-<!--        </td>-->
-<!--    </tr>-->
+
+
+    <tr>
+        <td>
+            <h:outputText value="*********************************************" styleClass="line"/>
+        </td>
+    </tr>
+
+
+    <!--    <tr>-->
+    <!--        <td><h:outputLabel value="Tabset"/></td>-->
+    <!--    </tr>-->
+    <!--    <tr>-->
+    <!--        <td>-->
+    <!--            <h:form id="tabSetForm">-->
+    <!--                <ace:tabSet id="serverTabSet" clientSide="false" style="clear:both;">-->
+    <!--                    <ace:tabPane id="pane1">-->
+    <!--                        <f:facet name="label">My First Server Tab</f:facet>-->
+    <!--                        <h:outputText id="pane1Body" value="First Tab Body"/>-->
+    <!--                        <h:outputText value="#{tabServerSide.slowDownTab}"-->
+    <!--                                      rendered="#{not tabServerSide.fastTabs}"/>-->
+    <!--                    </ace:tabPane>-->
+    <!--                    <ace:tabPane id="pane2">-->
+    <!--                        <f:facet name="label">My Second Server Tab</f:facet>-->
+    <!--                        <h:outputText id="pane2Body" value="Second Body"/>-->
+    <!--                        <h:outputText value="#{tabServerSide.slowDownTab}"-->
+    <!--                                      rendered="#{not tabServerSide.fastTabs}"/>-->
+    <!--                    </ace:tabPane>-->
+    <!--                    <ace:tabPane id="pane3">-->
+    <!--                        <f:facet name="label">My Third Server Tab</f:facet>-->
+    <!--                        <h:outputText id="pane3Body" value="Third Body"/>-->
+    <!--                        <h:outputText value="#{tabServerSide.slowDownTab}"-->
+    <!--                                      rendered="#{not tabServerSide.fastTabs}"/>-->
+    <!--                    </ace:tabPane>-->
+    <!--                </ace:tabSet>-->
+    <!--            </h:form>-->
+    <!--            <h:form id="form2">-->
+    <!--                <h:panelGrid columns="3" style="border-spacing: 10px;">-->
+    <!--                    <h:selectBooleanCheckbox id="fastTabs" value="#{tabServerSide.fastTabs}"/>-->
+    <!--                    <h:outputText value="Use Fast Loading Tabs"/>-->
+    <!--                    <h:commandButton id="set" value="Set" type="submit"/>-->
+    <!--                </h:panelGrid>-->
+    <!--            </h:form>-->
+    <!--        </td>-->
+    <!--    </tr>-->
 
 
     <tr>
@@ -214,21 +261,21 @@
                 <ace:tabSet id="serverTabSet" clientSide="false" style="clear:both;">
                     <ace:tabPane id="pane1">
                         <f:facet name="label">My First Server Tab</f:facet>
-                        <h:outputText id="pane1Body" value="First Tab Body" />
+                        <h:outputText id="pane1Body" value="First Tab Body"/>
                         <h:outputText value="#{tabServerSide.slowDownTab}"
-                                      rendered="#{not tabServerSide.fastTabs}" />
+                                      rendered="#{not tabServerSide.fastTabs}"/>
                     </ace:tabPane>
                     <ace:tabPane id="pane2">
                         <f:facet name="label">My Second Server Tab</f:facet>
-                        <h:outputText id="pane2Body" value="Second Body" />
+                        <h:outputText id="pane2Body" value="Second Body"/>
                         <h:outputText value="#{tabServerSide.slowDownTab}"
-                                      rendered="#{not tabServerSide.fastTabs}" />
+                                      rendered="#{not tabServerSide.fastTabs}"/>
                     </ace:tabPane>
                     <ace:tabPane id="pane3">
                         <f:facet name="label">My Third Server Tab</f:facet>
-                        <h:outputText id="pane3Body" value="Third Body" />
+                        <h:outputText id="pane3Body" value="Third Body"/>
                         <h:outputText value="#{tabServerSide.slowDownTab}"
-                                      rendered="#{not tabServerSide.fastTabs}" />
+                                      rendered="#{not tabServerSide.fastTabs}"/>
                     </ace:tabPane>
                 </ace:tabSet>
             </h:form>

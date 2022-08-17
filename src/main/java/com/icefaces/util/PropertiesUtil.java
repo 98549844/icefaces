@@ -17,40 +17,24 @@ import java.util.Properties;
  * @Description:
  */
 
-//@Component
-//@PropertySource(value = "classpath:properties/messages.properties", encoding = "UTF-8", name = "messages.properties")
 public class PropertiesUtil {
     private static final Logger log = LogManager.getLogger(PropertiesUtil.class.getName());
 
 
-    //src/main/resources/properties/messages.properties
+    //location: src/main/resources/properties/messages.properties
     public static String FILENAME = "properties/messages.properties";
 
     public static String getProperty(String filename, String key) throws IOException {
         Properties properties = new Properties();
         InputStream inStream = PropertiesUtil.class.getClassLoader().getResourceAsStream(filename);
         properties.load(inStream);
-       // System.out.println(properties.get(key));
-
         return (String) properties.get(key);
     }
 
     public static void main(String[] args) throws IOException {
-        getProperty(FILENAME, "version");
+        String k = getProperty(FILENAME, "version");
+        System.out.println(k);
     }
-
-
-//    @Value("${version}")
-//    private String version;
-//
-//
-//    public String getVersion() {
-//        return version;
-//    }
-//
-//    public void setVersion(String version) {
-//        this.version = version;
-//    }
 
 
 }

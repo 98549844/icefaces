@@ -38,11 +38,13 @@
     <div style="text-align: center;"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
     <div class="red"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
     <div class="blueviolet"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
-    <div class="olivedrab"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
-    <div class="olivedrab"><h2><label>FROM EDDIE PROVIDE : "#{index.profile}"</label></h2></div>
-    <div class="olivedrab"><h2><label>FROM R_FNC_FUNCTION : "#{index.rUpfUserProfile}"</label></h2></div>
-    <div class="olivedrab"><h2><label>FROM R_UPF_USER_PROFILE : "#{index.fncFunction}"</label></h2></div>
-
+    <div style="color: chartreuse"><h2><label>MESSAGE : "#{index.message}"</label></h2></div>
+    <br></br>
+    <div style="color: crimson"><h2><label>FROM EDDIE PROVIDE : "#{index.profile}"</label></h2></div>
+    <br></br>
+    <div style="color: yellow"><h2><label>FROM R_FNC_FUNCTION : "#{index.rUpfUserProfile}"</label></h2></div>
+    <br></br>
+    <div style="color: darkcyan"><h2><label>FROM R_UPF_USER_PROFILE : "#{index.fncFunction}"</label></h2></div>
     <div><a href="#" onclick="alertMsg()">call common.js !</a></div>
     <div><a href="#" onclick="alert('icefaces 4.3 application')">direct call javascript !</a></div>
 
@@ -83,79 +85,79 @@
 
             </td>
         </tr>
-<!--
+        <!--
 
-        <tr>
-            <td>
-                <h:outputText value="*********************************************" styleClass="line"/>
-            </td>
-        </tr>
+                <tr>
+                    <td>
+                        <h:outputText value="*********************************************" styleClass="line"/>
+                    </td>
+                </tr>
 
-        <tr>
-            <td>
-                <h:form id="fileUploadForm">
-                    <h:panelGrid styleClass="centeredPanelGrid">
-                        <h:outputText value="File Upload" styleClass="headerFontStyle"/>
-                    </h:panelGrid>
-                    <ace:panel>
-                        <ace:fileEntry id="file-entry"
-                                       relativePath="/files/"
-                                       maxFileCount="10"
-                                       maxFileCountMessage="Limited to 10 files uploaded concurrantly."
-                                       fileEntryListener="#{fileEntry.sampleListener}"
-                                       maxFileSize="6291456"
-                                       maxFileSizeMessage="Submitted file is too large."
-                                       maxTotalSize="18874368"
-                                       maxTotalSizeMessage="Total size of submitted files is too large."
-                                       required="true"
-                                       requiredMessage="The file is required to submit this form."
-                                       useOriginalFilename="true"
-                                       useSessionSubdir="true"
-                                       autoUpload="false"
-                                       multiple="true"/>
-                        <br/>
-                        <br/>
-                        <ace:dataTable id="tbl" value="#{fileEntry.fileData}" var="fileDataVal">
-                            <ace:columnGroup id="columnGroup" type="header">
-                                <ace:row>
-                                    <ace:column colspan="3" headerText="Files on Server"/>
-                                </ace:row>
+                <tr>
+                    <td>
+                        <h:form id="fileUploadForm">
+                            <h:panelGrid styleClass="centeredPanelGrid">
+                                <h:outputText value="File Upload" styleClass="headerFontStyle"/>
+                            </h:panelGrid>
+                            <ace:panel>
+                                <ace:fileEntry id="file-entry"
+                                               relativePath="/files/"
+                                               maxFileCount="10"
+                                               maxFileCountMessage="Limited to 10 files uploaded concurrantly."
+                                               fileEntryListener="#{fileEntry.sampleListener}"
+                                               maxFileSize="6291456"
+                                               maxFileSizeMessage="Submitted file is too large."
+                                               maxTotalSize="18874368"
+                                               maxTotalSizeMessage="Total size of submitted files is too large."
+                                               required="true"
+                                               requiredMessage="The file is required to submit this form."
+                                               useOriginalFilename="true"
+                                               useSessionSubdir="true"
+                                               autoUpload="false"
+                                               multiple="true"/>
+                                <br/>
+                                <br/>
+                                <ace:dataTable id="tbl" value="#{fileEntry.fileData}" var="fileDataVal">
+                                    <ace:columnGroup id="columnGroup" type="header">
+                                        <ace:row>
+                                            <ace:column colspan="3" headerText="Files on Server"/>
+                                        </ace:row>
 
-                                <ace:row>
-                                    <ace:column headerText="File name"/>
-                                    <ace:column headerText="File size"/>
-                                    <ace:column headerText="Content Type"/>
-                                </ace:row>
-                            </ace:columnGroup>
+                                        <ace:row>
+                                            <ace:column headerText="File name"/>
+                                            <ace:column headerText="File size"/>
+                                            <ace:column headerText="Content Type"/>
+                                        </ace:row>
+                                    </ace:columnGroup>
 
-                            <ace:column>
-                                <h:outputText value="#{fileDataVal.name}"/>
-                            </ace:column>
-                            <ace:column>
-                                <h:outputText value="#{fileDataVal.size}"/>
-                            </ace:column>
-                            <ace:column>
-                                <h:outputText value="#{fileDataVal.contentType}"/>
-                            </ace:column>
+                                    <ace:column>
+                                        <h:outputText value="#{fileDataVal.name}"/>
+                                    </ace:column>
+                                    <ace:column>
+                                        <h:outputText value="#{fileDataVal.size}"/>
+                                    </ace:column>
+                                    <ace:column>
+                                        <h:outputText value="#{fileDataVal.contentType}"/>
+                                    </ace:column>
 
-                            <ace:panelExpansion>
-                                <h:outputText rendered="#{not fileDataVal.info == null}"
-                                              value="#{fileDataVal.info}"/>
-                            </ace:panelExpansion>
+                                    <ace:panelExpansion>
+                                        <h:outputText rendered="#{not fileDataVal.info == null}"
+                                                      value="#{fileDataVal.info}"/>
+                                    </ace:panelExpansion>
 
-                            <f:facet name="footer">
-                                <h:panelGrid columns="1">
-                                    <h:outputText value="#{fileEntry.totalFiles}"/>
-                                    <h:outputText value="#{fileEntry.totalSize}"/>
-                                </h:panelGrid>
-                            </f:facet>
-                        </ace:dataTable>
-                        <ace:messages id="msgs" for="fileUploadForm:file-entry"/>
-                    </ace:panel>
-                </h:form>
-            </td>
-        </tr>
--->
+                                    <f:facet name="footer">
+                                        <h:panelGrid columns="1">
+                                            <h:outputText value="#{fileEntry.totalFiles}"/>
+                                            <h:outputText value="#{fileEntry.totalSize}"/>
+                                        </h:panelGrid>
+                                    </f:facet>
+                                </ace:dataTable>
+                                <ace:messages id="msgs" for="fileUploadForm:file-entry"/>
+                            </ace:panel>
+                        </h:form>
+                    </td>
+                </tr>
+        -->
 
     </table>
 
@@ -205,8 +207,6 @@
             <h:outputText value="*********************************************" styleClass="line"/>
         </td>
     </tr>
-
-
 
 
     <tr>

@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.naming.Name;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ import java.util.List;
  */
 
 
-@Service
+@Service(value = "rFncFunctionService")
 public class RFncFunctionService {
     private static final Logger log = LogManager.getLogger(RFncFunctionService.class.getName());
 

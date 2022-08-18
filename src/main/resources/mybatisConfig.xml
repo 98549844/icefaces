@@ -7,9 +7,10 @@
 
 
     <mappers>
-        <mapper resource="com/icefaces/dao/xml/RFncFunctionMapper.xml"/>
-        <mapper resource="com/icefaces/dao/xml/RUpfUserProfileMapper.xml"/>
-        <mapper resource="com/icefaces/dao/xml/UserProfileDAO.xml"/>
-        <mapper resource="com/icefaces/dao/xml/UsersMapper.xml"/>
+        <mapper resource="com/icefaces/mapper/xml/RFncFunctionMapper.xml"/>
+        <mapper resource="com/icefaces/mapper/xml/RUpfUserProfileMapper.xml"/>
+        <mapper resource="com/icefaces/mapper/xml/UserProfileDAO.xml"/>
+        <mapper resource="com/icefaces/mapper/xml/UsersMapper.xml"/>
     </mappers>
 </configuration>
+    

@@ -15,7 +15,7 @@ import java.util.List;
  * @Description:
  */
 
-@Service
+@Service(value = "rUpfUserProfileService")
 public class RUpfUserProfileService {
     private static final Logger log = LogManager.getLogger(RUpfUserProfileService.class.getName());
 

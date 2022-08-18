@@ -46,10 +46,10 @@ public class BeanUtil implements ApplicationContextAware {
         ApplicationContext context = ContextLoader.getCurrentWebApplicationContext();
         BeanUtil.applicationContext = context;
         String[] beanNames = BeanUtil.applicationContext.getBeanDefinitionNames();
-        System.out.println("total bean: {}  " + BeanUtil.applicationContext.getBeanDefinitionCount());
+        log.info("total bean: {}  " , BeanUtil.applicationContext.getBeanDefinitionCount());
         int i = 0;
         for (String s : beanNames) {
-            System.out.println(" {},beanName: {} " + ++i + s);
+            log.info(" {},beanName: {} " , ++i , s);
         }
     }
 

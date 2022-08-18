@@ -19,7 +19,7 @@
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.icefaces.dao"/>
+        <property name="basePackage" value="com.icefaces.mapper"/>
     </bean>
 
 

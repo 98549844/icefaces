@@ -1,4 +1,4 @@
-package com.icefaces.dao;
+package com.icefaces.mapper;
 
 import com.icefaces.models.UserProfile;
 import org.springframework.stereotype.Repository;

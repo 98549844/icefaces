@@ -1,7 +1,8 @@
 package com.icefaces.controller;
 
-import com.icefaces.models.UserProfile;
-import com.icefaces.models.Users;
+import com.icefaces.models.*;
+import com.icefaces.service.RFncFunctionService;
+import com.icefaces.service.RUpfUserProfileService;
 import com.icefaces.service.UsersService;
 import com.icefaces.util.BeanUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,15 @@ public class IndexController {
 
     private UsersService usersService;
 
+    private RFncFunctionService rFncFunctionService;
+
+    private RUpfUserProfileService rUpfUserProfileService;
+
     @Autowired
-    public IndexController(UsersService usersService) {
+    public IndexController(UsersService usersService, RFncFunctionService rFncFunctionService, RUpfUserProfileService rUpfUserProfileService) {
         this.usersService = usersService;
+        this.rFncFunctionService = rFncFunctionService;
+        this.rUpfUserProfileService = rUpfUserProfileService;
 
     }
 
@@ -63,5 +70,51 @@ public class IndexController {
 
         return users;
     }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/mybatis/getAllProfile")
+    public List<RUpfUserProfile> getAllProfile() {
+        List<RUpfUserProfile> profiles = rUpfUserProfileService.selectAll();
+
+        for (int i = 0; i < profiles.size(); i++) {
+            System.out.println("USER profiles:   " + profiles.get(i).getUpfEngName());
+        }
+        return profiles;
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/mybatis/getAllRfn")
+    public List<RFncFunction> getAllRfn() {
+        try {
+            List<RFncFunction> ls = rFncFunctionService.findAll();
+            for (int i = 0; i < ls.size(); i++) {
+                System.out.println(ls.get(i).getFncDesc());
+            }
+            return ls;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/mybatis/getRfn")
+    public RFncFunction getRfn() {
+
+        RFncFunctionKey key = new RFncFunctionKey();
+        key.setFncApplId("ACE2DEMO");
+        key.setFncParentFuncId("ACE2DEMO");
+        key.setFncFuncId("RANK");
+
+        try {
+            RFncFunction rFncFunction = rFncFunctionService.findByKey(key);
+            System.out.println(rFncFunction.getFncDesc());
+            return rFncFunction;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
 }
 

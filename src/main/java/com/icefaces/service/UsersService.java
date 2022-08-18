@@ -1,7 +1,7 @@
 package com.icefaces.service;
 
-import com.icefaces.dao.UserProfileDAO;
-import com.icefaces.dao.UsersMapper;
+import com.icefaces.mapper.UserProfileDAO;
+import com.icefaces.mapper.UsersMapper;
 import com.icefaces.models.UserProfile;
 import com.icefaces.models.Users;
 import org.apache.logging.log4j.LogManager;

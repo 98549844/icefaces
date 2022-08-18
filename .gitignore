@@ -13,6 +13,8 @@ target/
 *.ipr
 .idea
 icefaces.iml
+target
+
 
 ### Eclipse ###
 .apt_generated

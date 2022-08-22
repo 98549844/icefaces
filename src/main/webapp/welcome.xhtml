@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- $Id: systemParameterDemo.xhtml 1441 2011-01-26 13:37:57Z keith.wong $ -->
+<!-- $Name$ -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ace="http://www.icefaces.org/icefaces/components"
+	xmlns:icecore="http://www.icefaces.org/icefaces/core">
+	<h:body>
+		<ui:composition template="/layout.xhtml">
+			<ui:param name="moduleName" value="#{appres.moduleScheme}" />
+			<ui:param name="screenID" value="#{menuBean.currentFunc.screenId}" />
+			<ui:param name="tabSetTitle" value="#{msgs['example.ace.tabSet.serverSide.title']}"/>
+			<ui:param name="tabSetDescription" value="#{msgs['example.ace.tabSet.serverSide.description']}"/>
+			<ui:param name="fileEntryTitle" value="#{msgs['example.ace.fileentry.title']}"/>
+			<ui:param name="fileEntryDescription" value="#{msgs['example.ace.fileentry.description']}"/>
+
+			<ui:define name="screenPath">
+			#{menuBean.currentFunc.screenId}
+			</ui:define>
+
+			<ui:define name="content">
+				<icecore:loadBundle basename="hk.org.mpfa.sdbdemo.resource.SystemParameterDemo" var="spRes" />
+				<table width="70%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td valign="top" height="100">
+                        <div style="text-align: center;">
+                            <h2>Welcome to ACE Demo Application version: #{applicationStatus.application.buildVersion}</h2>
+                        </div>
+                    </td>
+                </tr>
+
+
+					<tr>
+						<td colspan="4" class="headingsub">
+							#{spRes.retrieveParameter}
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4"><h:outputLabel value="Message" /></td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							<ace:messages id="allMsgsA"
+								initEffect="highlight" for="@inView" changeEffect="puff" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Input Text" /></td>
+						<td colspan="3">
+							<ace:textEntry id="textInput"
+								labelPosition="left" />
+						</td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Input HKID"/></td>
+						<td colspan="3"><ace:maskedEntry id="hkidInput_idno"
+							onchange="submit()" maxlength="8" mask="a999999(*)"
+							valueChangeListener="#{InputHKID.verification}"
+							styleClass="#{InputHKID.inputStatus}" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Input Password" /></td>
+						<td colspan="3"><ace:textEntry id="passwordInput"
+							labelPosition="left" secret="true" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Input Text Area" /></td>
+						<td colspan="3"><ace:textAreaEntry id="textAreaInput"
+							labelPosition="left" rows="4" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Input Date" /></td>
+						<td colspan="3"><ace:dateTimeEntry id="calDate"
+							timeZone="Canada/Mountain" 
+							pattern="yyyy/MM/dd" navigator="true"
+							renderAsPopup="true" /></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Input Date Time" /></td>
+						<td colspan="3"><ace:dateTimeEntry id="calDateTime"
+							timeZone="Canada/Mountain" 
+							pattern="yyyy/MM/dd HH:mm:ss" navigator="true"
+							timeOnly="both"
+							renderAsPopup="true" /></td>
+					</tr>
+					<tr>
+                    <td colspan="4" bgcolor="#ff9c00">
+                        <img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+                    </td>
+			        </tr>
+					<tr>
+						<td><h:outputLabel value="Select Drop Down List" /></td>
+						<td colspan="3">
+						<ace:simpleSelectOneMenu id="selectProvince">
+							<f:selectItem itemValue="a" itemLabel="Category A" />
+							<f:selectItem itemValue="b" itemLabel="Category B" />
+							<f:selectItem itemValue="c" itemLabel="Category C" />
+						</ace:simpleSelectOneMenu></td>
+					</tr>
+					<tr>
+						<td><h:outputLabel value="Select Drop Down Table" /></td>
+						<td colspan="3">
+							<ace:autoCompleteEntry
+								id="autoCompleteFacet"
+								value="#{autoCompleteEntryFacetBean.selectedText}"
+								rows="10"
+								width="500"
+								filterMatchMode="startsWith"
+								listVar="file"
+								listValue="#{autoCompleteEntryFacetBean.filesData}"
+								filterBy="#{file.fileName}"
+								>
+								<f:facet name="row">
+									<h:panelGrid columns="4" width="100%"
+										columnClasses="col100,col35,col100,col150">
+										<!-- <ace:graphicImage
+											value="#{autoCompleteEntryFacetBean.house.path}" alt="House" /> -->
+										<h:outputText value="#{file.fileName}" />
+										<h:outputText value="#{file.size}" />
+										<h:outputText value="#{file.uploadUserName}" />
+										<h:outputText value="#{file.uploadDateTime}" />
+									</h:panelGrid>
+								</f:facet>
+								<ace:ajax event="valueChange" render="@all" />
+								<ace:ajax event="blur" render="@all" />
+							</ace:autoCompleteEntry>
+						</td>
+					</tr>
+					<tr>
+                    <td colspan="4" bgcolor="#ff9c00">
+                        <img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+                    </td>
+                </tr>
+
+                <tr>  
+                        <td><h:outputLabel value="Radio button"/></td>
+                        <td colspan="2">
+                        	<h:form id= "form" style="text-align: center">
+					                <ace:buttonGroup id="buttonGroup1" mutuallyExclusive="true">
+					                    <h:panelGrid columns="4" width="100%" columnClasses="col25,col25,col25,col25">
+					                        <ace:radioButton id="button1" value="#{radioButtonBean.selectOption1}" label="Option 1" labelPosition="right">
+					                            <ace:ajax execute="@form" event="activate" render="@all"/>
+					                        </ace:radioButton>
+					                        <ace:radioButton id="button2" value="#{radioButtonBean.selectOption2}" label="Option 2" labelPosition="right">
+					                            <ace:ajax execute="@form" event="activate" render="@all"/>
+					                        </ace:radioButton>
+					                        <ace:radioButton id="button3" value="#{radioButtonBean.selectOption3}" label="Option 3" labelPosition="right">
+					                            <ace:ajax execute="@form" event="activate" render="@all"/>
+					                        </ace:radioButton>
+					                         <ace:pushButton id="resetRadioButton"
+			                                    value="Reset"
+			                                    actionListener="#{radioButtonBean.clearSelection}"/>
+					                    </h:panelGrid>
+					                </ace:buttonGroup>
+					        </h:form>
+                       </td>
+                </tr>
+                <!-- 
+                <tr>  
+                        <td><h:outputLabel value="Radio button group"/></td>
+                        <td colspan="3">
+                        	 <h:form id= "radioButtonsForm" style="text-align: center">
+					            <ace:panel>
+					            	<h:panelGrid columns="2" width="100%" styleClass="textEntryInputTable">
+						                <ace:radioButtons id="radioButtons" value="#{radioButtonBean.selectValue}" labelPosition="right">
+						                    <f:selectItem itemLabel="Option 1" itemValue="Option1" />
+						                    <f:selectItem itemLabel="Option 2" itemValue="Option2" />
+						                    <f:selectItem itemLabel="Option 3" itemValue="Option3" />
+						                    <ace:ajax />
+						                </ace:radioButtons>
+						                <ace:pushButton id="clearButton" value="Reset" actionListener="#{radioButtonBean.clearValues}">
+							                <ace:ajax />
+							            </ace:pushButton>
+					                </h:panelGrid>
+					            </ace:panel>
+					        </h:form>
+                       </td>
+                      
+                </tr>
+                 -->
+                <tr>  
+                        <td><h:outputLabel value="Radio button group"/></td>
+                        <td colspan="2">
+                        	<form>
+							<input type="radio" id="age1" name="option" value="Option1" class="ui-corner-all ui-widget-content"/>
+							<label for="age1">Option 1</label>
+							<input type="radio" id="age2" name="option" value="Option2" class="ui-corner-all ui-widget-content"/>
+							<label for="age2">Option 2</label>  
+							<input type="radio" id="age3" name="option" value="Option3" class="ui-corner-all ui-widget-content"/>
+							<label for="age3">Option 3</label>
+							</form>
+                       </td>
+                       <td>
+	                       <ace:pushButton onclick="document.querySelector('input[type=radio][name=option]:checked').checked = false;" value="Reset"></ace:pushButton>
+                       </td>
+                </tr>
+                <tr>
+                    <ace:buttonGroup id="buttonGroup2">
+                        <td><h:outputLabel value="Click button group"/></td>
+                        <td><ace:checkboxButton id="cButton1" label="Option 1"
+                                                labelPosition="top">
+                        </ace:checkboxButton></td>
+                        <td><ace:checkboxButton id="cButton2" label="Option 2"
+                                                labelPosition="top">
+                        </ace:checkboxButton></td>
+                        <td><ace:checkboxButton id="cButton3" label="Option 3"
+                                                labelPosition="top">
+                        </ace:checkboxButton></td>
+                    </ace:buttonGroup>
+                </tr>
+                <tr>
+                    <td colspan="4" bgcolor="#ff9c00">
+                        <img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Multi-Column Dropdown List"/></td>
+                    <td colspan="3">
+                    	<input type="text" id="multiSelectFileName" value="#{dataTableBean.selectFileNameList}" class="ui-inputfield ui-textentry ui-widget ui-state-default ui-corner-all ui-state-optional"/>
+                    	<ace:pushButton value="V" id="pb1">
+		                	<ace:ajax execute="@none" render="@none"
+                               	onStart="ice.ace.instance('#{multiColumnPanel.clientId}').show(); return false;" />
+		            	</ace:pushButton>
+                    </td>
+                    </tr>
+                    <tr>
+					<td colspan="4">
+						<h:form id="multiColumnTableForm">
+							<style type="text/css">
+				                /* Important required because row */
+				                .ui-datatable-odd {
+				                    background-color:lightgray !important;
+				                    background-position-y: -1400px; /* IE7 hack */
+				                }
+				            </style>
+							<ace:panel id="multiColumnPanel" binding="#{multiColumnPanel}"
+			                	header="Multi-Column table"
+			                    closable="true"
+			                    closeSpeed="50">
+								<h:selectManyCheckbox 
+									id="checkbox" 
+									value="#{dataTableBean.selectedCheckboxes}"
+									valueChangeListener="#{dataTableBean.checkboxChange}"
+									styleClass="checkboxes">
+									<f:ajax render="@form" execute="@this"/>
+									<f:selectItems value="#{dataTableBean.checkboxes}"/>
+								</h:selectManyCheckbox>    
+						        <ace:dataTable 
+						        	id="dataTable" 
+						            value="#{dataTableBean.filesData}" 
+						            var="filesData"
+						            selectionMode="multiple"
+						            stateMap="${dataTableBean.stateMap}"
+						            rowSelectListener="#{dataTableBean.selectListener}"
+						            rowUnselectListener="#{dataTableBean.deselectListener}">
+							        <c:forEach items="#{dataTableBean.columns}" var="colModel">
+							        	<ace:column headerText="#{colModel.headerText}">#{filesData[colModel.value]}</ace:column>
+							        </c:forEach>
+							    </ace:dataTable>
+							</ace:panel>
+						</h:form>
+					</td>
+				</tr>
+                <tr>
+                    <td colspan="4" bgcolor="#ff9c00">
+                        <img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel value="Pop up window"/></td>
+                    <td colspan="3">
+                    
+                        <h:panelGroup style="display:block;">
+                            <h:outputText id="enteredName" value="#{dialogBean.selectValue}"/>
+                            <ace:pushButton id="show" value="..." type="button" 
+                            onclick="ice.ace.instance('#{searchListDialog.clientId}').show();return false;">
+                            </ace:pushButton>
+                        </h:panelGroup>
+                        <ace:dialog id="searchListDialog"
+                        	binding="#{searchListDialog}"
+                            header="Search List Selection Box"
+                            closable="true"
+                            modal="true"
+                            draggable="false"
+                            showEffect="clip"
+                            hideEffect="fade"
+                            width="800">
+                            <h:form id="inputForm">
+                                <h:panelGrid columns="2" width="100%">
+                                    <h:outputLabel id="schemeIDLabel" for="schemeIDField" value="Scheme ID:"/>
+                                    <ace:textEntry id="schemeIDField"
+                                                   value="#{dialogBean.schemeID}"/>
+ 
+                                    <h:outputLabel id="nameLabel" for="nameInputField" value="Name:"/>
+                                    <ace:textEntry id="nameInputField"
+                                                   value="#{dialogBean.name}"/>
+ 
+                                    <h:outputLabel id="chineseNameLabel" for="chineseNameInputField"
+                                                   value="Chinese Name:"/>
+                                    <ace:textEntry id="chineseNameInputField"
+                                                   value="#{dialogBean.chineseName}"/>
+ 
+                                    <h:outputLabel id="detailDataText1Label" for="detailDataText1Field"
+                                                   value="Detail Data Text1:"/>
+                                    <ace:textEntry id="detailDataText1Field" value="#{dialogBean.detailDataText1}"/>
+                                    <ace:pushButton id="btnSearch" value="Search"
+                                                    actionListener="#{dialogBean.search}">
+                                        <ace:ajax execute="@this inputForm:schemeIDField inputForm:nameInputField inputForm:chineseNameInputField inputForm:detailDataText1Field" render="@this inputForm"/>
+                                        </ace:pushButton>
+                                    <ace:pushButton id="btnReset" value="Reset"
+                                                    actionListener="#{dialogBean.reset}">
+                                         <ace:ajax execute="@this inputForm:schemeIDField inputForm:nameInputField inputForm:chineseNameInputField inputForm:detailDataText1Field" render="@this inputForm"/>
+                                        </ace:pushButton>
+ 
+                                </h:panelGrid>
+                                <ace:dataTable id="selectionTable"
+                                               value="#{dialogBean.listValue}"
+                                               var="row"
+                                               rows="5"
+                                               selectionMode="single"
+                                               rowSelectListener="#{dialogBean.selectListener}">
+                                    <ace:ajax event="select" execute="@this" render="@this enteredName"
+                               			onSuccess="ice.ace.instance('#{searchListDialog.clientId}').hide();" />
+                                    <ace:column id="schemeIDCol" headerText="Scheme ID">
+                                        <h:outputText id="schemeIDCell" value="#{row.id}"/>
+                                    </ace:column>
+                                    <ace:column id="schemeNameCol" headerText="Scheme Name">
+                                        <h:outputText id="schemeNameCell" value="#{row.name}"/>
+                                    </ace:column>
+                                    <ace:column id="schemeChineseNameCol" headerText="Scheme Chinese Name">
+                                        <h:outputText id="schemeChineseNameCell" value="#{row.chiName}"/>
+                                    </ace:column>
+                                    <ace:column id="typeCol" headerText="Type">
+                                        <h:outputText id="typeCell" value="#{row.type}"/>
+                                    </ace:column>
+                                    <ace:column id="dataTest1Col" headerText="Data Text 1 (Detail)">
+                                        <h:outputText id="dataTest1Cell" value="#{row.testDataText1}"/>
+                                    </ace:column>
+                                </ace:dataTable>
+                            </h:form>
+                        </ace:dialog>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" bgcolor="#ff9c00"><img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4"><h:outputLabel value="Table Demo"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4"> 
+                    
+                    	<h:form id="demoTableForm">
+	                    	<h:selectManyCheckbox 
+								id="tableColumnCheckbox" 
+								value="#{Scheme.selectedCheckboxes}"
+								valueChangeListener="#{Scheme.checkboxChange}"
+								styleClass="checkboxes">
+								<f:ajax render="@form" execute="@this"/>
+								<f:selectItems value="#{Scheme.checkboxes}"/>
+							</h:selectManyCheckbox>    
+							<ace:dataTable 
+								id="demoTable" 
+							    value="#{Scheme.listValue}" 
+							    var="filesData"
+							    selectionMode="multiple"
+							    >
+							    <ace:ajax onStart="alert('The value is about to be submitted to the server.'); return true;" execute="@this" render="@this" />
+								<c:forEach items="#{Scheme.displayColumns}" var="colModel">
+									<ace:column headerText="#{colModel.headerText}">#{filesData[colModel.value]}</ace:column>
+								</c:forEach>
+							</ace:dataTable>
+						</h:form>
+						 
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" bgcolor="#ff9c00"><img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+                    </td>
+                </tr>
+                <tr><td colspan="4"><h:outputLabel value="Confirm Dialog"/></td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<ui:insert name="confirmationDialogEffects">
+							<ui:include src="confirmationDialogEffects.xhtml" />
+						</ui:insert>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" bgcolor="#ff9c00"><img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+					</td>
+				</tr>
+				<tr>
+                    <td colspan="4"><h:outputLabel value="Dialog Demo2"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <h:form id="confirmDialogForm">
+                            <h:panelGrid styleClass="centeredPanelGrid">
+                                <ace:pushButton id="save"
+                                                value="Save"
+                                                type="button">
+                                    <ace:ajax execute="@none" render="@none"
+                                              onStart="ice.ace.instance('#{confirmDialog.clientId}').show();return false;"/>
+                                </ace:pushButton>
+                                <h:outputText id="outcome" value="#{confirmationDialogBean.outcome}"
+                                              rendered="#{confirmationDialogBean.outcome != null}"/>
+                            </h:panelGrid>
+
+                            <ace:confirmationDialog id="confirmDialog" binding="#{confirmDialog}"
+                                                    style="font-size: .9em;"
+                                                    message="Are you sure about this?"
+                                                    header="Confirmation"
+                                                    width="250"
+                                                    height="150"
+                                                    closable="true"
+                                                    position="center">
+                                <h:panelGrid columns="2" styleClass="centeredPanelGrid">
+                                    <ace:pushButton id="yes" value="Yes"
+                                                    onclick="ice.ace.instance('#{confirmDialog.clientId}').hide();"
+                                                    actionListener="#{confirmationDialogBean.yes}">
+                                        <ace:ajax execute="@this" render="@all"/>
+                                    </ace:pushButton>
+                                    <ace:pushButton id="no" value="No"
+                                                    onclick="ice.ace.instance('#{confirmDialog.clientId}').hide();"
+                                                    actionListener="#{confirmationDialogBean.no}">
+                                        <ace:ajax execute="@this" render="@all"/>
+                                    </ace:pushButton>
+                                </h:panelGrid>
+                            </ace:confirmationDialog>
+                        </h:form>
+                    </td>
+                </tr>
+				<tr>
+					<td colspan="4" bgcolor="#ff9c00"><img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+					</td>
+				</tr>
+				<tr><td colspan="4"><h:outputLabel value="Search List"/></td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<ui:insert name="inputSearchList">
+							<ui:include src="inputSearchList.xhtml" />
+						</ui:insert>
+					</td>
+				</tr>
+				
+				<tr>
+					<td colspan="4" bgcolor="#ff9c00"><img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+					</td>
+				</tr>
+                <tr>
+                    <td colspan="4"><h:outputLabel value="Tabset"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <h:form id="tabSetForm">
+                            <ace:tabSet id="serverTabSet" clientSide="false" style="clear:both;">
+                                <ace:tabPane id="pane1">
+                                    <f:facet name="label">My First Server Tab</f:facet>
+                                    <h:outputText id="pane1Body" value="First Tab Body"/>
+                                    <h:outputText value="#{tabServerSide.slowDownTab}"
+                                                  rendered="#{not tabServerSide.fastTabs}"/>
+                                </ace:tabPane>
+                                <ace:tabPane id="pane2">
+                                    <f:facet name="label">My Second Server Tab</f:facet>
+                                    <h:outputText id="pane2Body" value="Second Body"/>
+                                    <h:outputText value="#{tabServerSide.slowDownTab}"
+                                                  rendered="#{not tabServerSide.fastTabs}"/>
+                                </ace:tabPane>
+                                <ace:tabPane id="pane3">
+                                    <f:facet name="label">My Third Server Tab</f:facet>
+                                    <h:outputText id="pane3Body" value="Third Body"/>
+                                    <h:outputText value="#{tabServerSide.slowDownTab}"
+                                                  rendered="#{not tabServerSide.fastTabs}"/>
+                                </ace:tabPane>
+                            </ace:tabSet>
+                        </h:form>
+                        <h:form id="form2">
+                            <h:panelGrid columns="3" style="border-spacing: 10px;">
+                                <h:selectBooleanCheckbox id="fastTabs" value="#{tabServerSide.fastTabs}"/>
+                                <h:outputText value="Use Fast Loading Tabs"/>
+                                <h:commandButton id="set" value="Set" type="submit"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </td>
+                </tr>
+ 
+ 				<tr>
+					<td colspan="4" bgcolor="#ff9c00"><img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+					</td>
+				</tr>
+				<tr><td colspan="4"><h:outputLabel value="Tabset Scrollable"/></td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<ui:insert name="tabSet">
+							<ui:include src="tabSet.xhtml" />
+						</ui:insert>
+					</td>
+				</tr>
+ 				
+ 				<tr>
+					<td colspan="4" bgcolor="#ff9c00"><img src="images/spacer.gif" width="919" height="3" alt="spacer"/>
+					</td>
+				</tr>
+                <tr>
+                    <td colspan="4"><h:outputLabel value="FileDownload"/></td>
+                </tr>
+ 
+                <tr>
+                    <td colspan="4">
+                        <h:form id="fileDownloadForm">
+                            <ace:panel id="dynamicResourcePanel" header="Dynamic Resource" style="width: 100%;">
+                                <h:panelGrid width="70%" columns="2" cellpadding="15" cellspacing="15">
+                                    <h:outputLabel for="label" value="Enter label: "/>
+                                    <ace:textEntry id="label" value="#{dynamicResourceBean.label}">
+                                        <ace:ajax render="@form"/>
+                                    </ace:textEntry>
+ 
+                                    <h:outputLabel for="type" value="Choose Type: "/>
+                                    <ace:radioButtons id="type"
+                                                      style="font-size:.9em;"
+                                                      value="#{dynamicResourceBean.type}">
+                                        <ace:ajax render="@form"/>
+                                        <f:selectItem itemValue="link" itemLabel="Link"/>
+                                        <f:selectItem itemValue="image" itemLabel="Image"/>
+                                        <f:selectItem itemValue="button" itemLabel="Button"/>
+                                    </ace:radioButtons>
+ 
+                                    <ace:dynamicResource id="dynamicResource"
+                                                         resource="#{dynamicResourceBean.resource}"
+                                                         label="#{dynamicResourceBean.label}"
+                                                         mimeType="application/pdf"
+                                                         image="#{dynamicResourceBean.type eq 'image' ? 'css/images/download-button.gif' : ''}"
+                                                         type="#{dynamicResourceBean.type}"/>
+                                    <h:outputText value=""/>
+                                </h:panelGrid>
+                            </ace:panel>
+ 
+                        </h:form>
+                    </td>
+                </tr>
+ 
+ 
+                <tr>
+                    <td colspan="4"><h:outputLabel value="FileUpload"/></td>
+                </tr>
+ 
+                <tr>
+                    <td colspan="4">
+                        <h:form id="fileUploadForm">
+                            <h:panelGrid styleClass="centeredPanelGrid">
+                                <h:outputText value="File Upload" styleClass="headerFontStyle"/>
+                            </h:panelGrid>
+                            <ace:panel>
+                                <ace:fileEntry id="file-entry"
+                                               relativePath="/files/"
+                                               maxFileCount="10"
+                                               maxFileCountMessage="Limited to 10 files uploaded concurrantly."
+                                               fileEntryListener="#{fileEntry.sampleListener}"
+                                               maxFileSize="6291456"
+                                               maxFileSizeMessage="Submitted file is too large."
+                                               maxTotalSize="18874368"
+                                               maxTotalSizeMessage="Total size of submitted files is too large."
+                                               required="true"
+                                               requiredMessage="The file is required to submit this form."
+                                               useOriginalFilename="true"
+                                               useSessionSubdir="true"
+                                               autoUpload="false"
+                                               multiple="true"/>
+                                <br/>
+                                <br/>
+                                <ace:dataTable id="tbl" value="#{fileEntry.fileData}" var="fileDataVal">
+                                    <ace:columnGroup id="columnGroup" type="header">
+                                        <ace:row>
+                                            <ace:column colspan="3" headerText="Files on Server"/>
+                                        </ace:row>
+ 
+                                        <ace:row>
+                                            <ace:column headerText="File name"/>
+                                            <ace:column headerText="File size"/>
+                                            <ace:column headerText="Content Type"/>
+                                        </ace:row>
+                                    </ace:columnGroup>
+ 
+                                    <ace:column>
+                                        <h:outputText value="#{fileDataVal.name}"/>
+                                    </ace:column>
+                                    <ace:column>
+                                        <h:outputText value="#{fileDataVal.size}"/>
+                                    </ace:column>
+                                    <ace:column>
+                                        <h:outputText value="#{fileDataVal.contentType}"/>
+                                    </ace:column>
+ 
+                                    <ace:panelExpansion>
+                                        <h:outputText rendered="#{not fileDataVal.info == null}"
+                                                      value="#{fileDataVal.info}"/>
+                                    </ace:panelExpansion>
+ 
+                                    <f:facet name="footer">
+                                        <h:panelGrid columns="1">
+                                            <h:outputText value="#{fileEntry.totalFiles}"/>
+                                            <h:outputText value="#{fileEntry.totalSize}"/>
+                                        </h:panelGrid>
+                                    </f:facet>
+                                </ace:dataTable>
+                                <ace:messages id="msgs" for="fileUploadForm:file-entry"/>
+                            </ace:panel>
+                        </h:form>
+ 
+ 
+                    </td>
+                </tr>
+ 
+ 
+            </table>
+        </ui:define>
+    </ui:composition>
+</h:body>
+</html>

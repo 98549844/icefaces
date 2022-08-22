@@ -11,6 +11,7 @@
         <mapper resource="com/icefaces/mapper/xml/RUpfUserProfileMapper.xml"/>
         <mapper resource="com/icefaces/mapper/xml/UserProfileDAO.xml"/>
         <mapper resource="com/icefaces/mapper/xml/UsersMapper.xml"/>
+        <mapper resource="com/icefaces/mapper/xml/AuthorizationMapper.xml"/>
     </mappers>
 </configuration>
     

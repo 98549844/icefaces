@@ -42,6 +42,12 @@ public class IndexController {
         BeanUtil.printBeanNameByContextLoader();
     }
 
+
+    @RequestMapping(value = "/printManagedBean", method = RequestMethod.GET)
+    public void printManagedBeanName() {
+        BeanUtil.printManagedBeanName();
+    }
+
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public ModelAndView helloWorld() {
         System.out.println("Hello World ~~~");

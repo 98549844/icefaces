@@ -12,6 +12,7 @@
         <mapper resource="com/icefaces/mapper/xml/UserProfileDAO.xml"/>
         <mapper resource="com/icefaces/mapper/xml/UsersMapper.xml"/>
         <mapper resource="com/icefaces/mapper/xml/AuthorizationMapper.xml"/>
+        <!-- <package name="com.icefaces.mapper"/> mapper and xml MUST in same folder-->
     </mappers>
 </configuration>
     
